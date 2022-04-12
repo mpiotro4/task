@@ -43,6 +43,7 @@ class EstoreScraper
         $nodes = $this->getNodesByClassName('page-link next', $dom);
         $pages = [];
         foreach ($nodes as $node) {
+            // to do zmienić to 
             $pages[] = $url . 'index.php?page=' . $node->getAttribute('data-page');
         }
         return $pages;
