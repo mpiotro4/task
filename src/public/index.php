@@ -3,17 +3,10 @@
 declare(strict_types=1);
 $root = dirname(__DIR__) . DIRECTORY_SEPARATOR;
 define('APP_PATH', $root . 'app' . DIRECTORY_SEPARATOR);
-require(APP_PATH . 'HtmlParser.php');
+require(APP_PATH . 'EstoreScraper.php');
 
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_URL, "http://estoremedia.space/DataIT/");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-$html = curl_exec($ch);
-curl_close($ch);
-
-$htmlParser = new HtmlParser();
+$scraper = new EstoreScraper();
 
 echo '<pre>';
-print_r($htmlParser->getProducts($html));
+print_r($scraper->getProductsWithPagination('http://estoremedia.space/DataIT/index.php?page=3'));
 echo '</pre>';
