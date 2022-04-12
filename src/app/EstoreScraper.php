@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+namespace App;
 
 class EstoreScraper
 {
@@ -19,7 +20,7 @@ class EstoreScraper
     {
         $html = $this->getHtml($url);
 
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadHTML($html);
 
         $nodes = $this->getNodesByClassName('card h-100', $dom);
@@ -36,7 +37,7 @@ class EstoreScraper
     {
         $html = $this->getHtml($url);
 
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadHTML($html);
 
         $nodes = $this->getNodesByClassName('page-link next', $dom);
@@ -62,7 +63,7 @@ class EstoreScraper
     private function getOutput($rawHtmlProducts)
     {
         foreach ($rawHtmlProducts as $product) {
-            $dom = new DOMDocument();
+            $dom = new \DOMDocument();
             $dom->loadHTML(mb_convert_encoding($product, 'HTML-ENTITIES', 'UTF-8'));
             $output[] = $this->getProductParams($dom);
         }
@@ -86,7 +87,7 @@ class EstoreScraper
 
     private function getNodesByClassName($className, $dom)
     {
-        $finder = new DomXPath($dom);
+        $finder = new \DomXPath($dom);
         $nodes = $finder->query("//*[contains(concat(' ', normalize-space(@class), ' '), '$className')]");
         return $nodes;
     }
