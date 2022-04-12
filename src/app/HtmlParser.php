@@ -13,8 +13,7 @@ class HtmlParser
         $dom->loadHTML($html);
 
         $finder = new DomXPath($dom);
-        $classname = "card h-100";
-        $nodes = $finder->query("//*[contains(concat(' ', normalize-space(@class), ' '), ' $classname ')]");
+        $nodes = $finder->query("//*[contains(concat(' ', normalize-space(@class), ' '), 'card h-100')]");
 
         $rawHtmlProducts = [];
 
@@ -22,19 +21,23 @@ class HtmlParser
             $rawHtmlProducts[] = $node->ownerDocument->saveHTML($node);
         }
 
-        $output = [];
+        return $this->getOutput($rawHtmlProducts);
+    }
 
+    private function getOutput($rawHtmlProducts)
+    {
         foreach ($rawHtmlProducts as $product) {
             $dom = new DOMDocument();
-            $dom->loadHTML($product);
+            $dom->loadHTML(mb_convert_encoding($product, 'HTML-ENTITIES', 'UTF-8'));
             $output[] = $this->getProductParams($dom);
         }
-
         return $output;
     }
 
     private function getProductParams($dom)
     {
+        $rating = $dom->getElementsByTagName('small')[0]->nodeValue;
+
         return [
             'name' => $dom->getElementsByTagName('a')[1]->getAttribute('data-name'),
             'url' => $dom->getElementsByTagName('a')[1]->getAttribute('href'),
