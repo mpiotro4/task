@@ -15,10 +15,15 @@ $scraper = new EstoreScraper();
 $arr = $scraper->getProductsWithPagination(url: 'http://estoremedia.space/DataIT/', download: true);
 CsvProducer::produceCSV("products.csv", $arr);
 
+echo '<br>';
 echo "Prasowanie produktów zakończone, wynik zapisany do pliku 'products.csv' w katalogu public";
 echo '<br>';
 
 $products = CsvReader::readCSV('products.csv');
 
+function myFunction()
+{
+    return "DUPSKO";
+}
 
 require VIEWS_PATH . 'table.php';

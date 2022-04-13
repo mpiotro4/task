@@ -6,6 +6,41 @@ namespace App;
 
 class EstoreScraper
 {
+    public function getProduct($id)
+    {
+        $html = HtmlProducer::getHtml('http://estoremedia.space/DataIT/product.php?id=' . $id);
+
+        $dom = new \DOMDocument();
+        $dom->loadHTML($html);
+
+        $wholeColumn = $this->getNodesByClassName('col-lg-9', $dom);
+        $price = $this->getNodesByClassName('price', $dom);
+        $pricePromo = $this->getNodesByClassName('price-promo', $dom);
+        $priceOld = $this->getNodesByClassName('price-old', $dom);
+        $img = $dom->getElementsByTagName('img')[0]->getAttribute('src');
+        $json = $dom->getElementsByTagName('script')[1]->nodeValue;
+        $ratingWithNumber = trim($dom->getElementsByTagName('small')[0]->nodeValue);
+
+
+        echo '<br>';
+        echo 'price: ' . $price[0]->nodeValue ?? '' . '<br>';
+        echo '<br>';
+        echo 'promo price: ';
+        echo $pricePromo[0]->nodeValue ?? '' . '<br>';
+        echo 'old price: ';
+        echo $priceOld[0]->nodeValue ?? '' . '<br>';
+        echo 'img url: ' . $img;
+        echo '<br>';
+        echo 'json: ' . $json;
+        echo '<br>';
+        echo 'rating: ' . $ratingWithNumber;
+        // foreach ($nodes as $node) {
+        //     echo "<br>";
+        //     echo $node->nodeValue;
+        //     echo "<br>";
+        // }
+    }
+
     public function getProductsWithPagination($url, $download = false)
     {
         $pages = $this->getPages($url);

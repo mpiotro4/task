@@ -8,7 +8,7 @@
                 <th>Name</th>
                 <th>URL</th>
                 <th>IMG URL</th>
-                <th>price</th>
+                <th>Price</th>
                 <th>Rating</th>
                 <th>Number of Ratings</th>
             </tr>
@@ -17,7 +17,7 @@
             <?php if (!empty($products)) : ?>
                 <?php foreach ($products as $product) : ?>
                     <tr>
-                        <td><?= $product['name'] ?></td>
+                        <td> <a href="<?= 'product.php?id' . strstr($product['url'], '=', false) ?>"><?= $product['name'] ?> </a></td>
                         <td><?= $product['url'] ?></td>
                         <td><?= $product['img'] ?></td>
                         <td><?= $product['price'] ?></td>
