@@ -18,7 +18,7 @@ class EstoreScraper
 
     public function getProducts($url, $download = false)
     {
-        $html = $this->getHtml($url, $download);
+        $html = HtmlProducer::getHtml($url, $download);
 
         $dom = new \DOMDocument();
         $dom->loadHTML($html);
@@ -35,7 +35,7 @@ class EstoreScraper
 
     private function getPages($url)
     {
-        $html = $this->getHtml($url);
+        $html = Htmlproducer::getHtml($url);
 
         $dom = new \DOMDocument();
         $dom->loadHTML($html);
@@ -47,32 +47,6 @@ class EstoreScraper
             $pages[] = $url . 'index.php?page=' . $node->getAttribute('data-page');
         }
         return $pages;
-    }
-
-    private function downloadHtml($url)
-    {
-        $fileName = str_replace(['/', ':', '?'], '', $url);
-        if (!file_exists($fileName)) {
-            $out = $this->getHtml($url);
-            $fp = fopen($fileName, 'w+');
-            fwrite($fp, $out);
-            fclose($fp);
-        };
-        return file_get_contents($fileName);
-    }
-
-    private function getHtml($url, $download = false)
-    {
-        if ($download) return $this->downloadHtml($url);
-
-        libxml_use_internal_errors(true);
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $html = curl_exec($ch);
-        curl_close($ch);
-        return $html;
     }
 
     private function getOutput($rawHtmlProducts)

@@ -5,6 +5,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\EstoreScraper;
 use App\CsvProducer;
+use App\HtmlProducer;
 
 $scraper = new EstoreScraper();
 
