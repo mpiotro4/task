@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>URL</th>
+                <th>IMG URL</th>
+                <th>price</th>
+                <th>Rating</th>
+                <th>Number of Ratings</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($products)) : ?>
+                <?php foreach ($products as $product) : ?>
+                    <tr>
+                        <td><?= $product['name'] ?></td>
+                        <td><?= $product['url'] ?></td>
+                        <td><?= $product['img'] ?></td>
+                        <td><?= $product['price'] ?></td>
+                        <td><?= $product['rating'] ?></td>
+                        <td><?= $product['number of ratings'] ?></td>
+                    </tr>
+                <?php endforeach ?>
+            <?php endif ?>
+        </tbody>
+    </table>
+</body>
+
+</html>
