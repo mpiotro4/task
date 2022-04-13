@@ -8,9 +8,17 @@ use DOMDocument;
 
 class EstoreScraper
 {
+    private string $url;
+
+
+    public function __construct(string $url)
+    {
+        $this->url = $url;
+    }
+
     public function getProduct(string $id): array
     {
-        $html = HtmlProducer::getHtml('http://estoremedia.space/DataIT/product.php?id=' . $id);
+        $html = HtmlProducer::getHtml($this->url . 'product.php?id=' . $id);
         $dom = new \DOMDocument();
         $dom->loadHTML($html);
         $finder = new \DomXPath($dom);
@@ -33,12 +41,12 @@ class EstoreScraper
         ];
     }
 
-    public function getProductsWithPagination(string $url, bool $download = false): array
+    public function getProductsWithPagination(bool $download = false): array
     {
-        $pages = $this->getPages($url);
+        $pagesUrls = $this->getPagesUrls($this->url);
         $output = [];
-        foreach ($pages as $page) {
-            $output = array_merge($output, $this->getProducts($page, $download));
+        foreach ($pagesUrls as $pageUrl) {
+            $output = array_merge($output, $this->getProducts($pageUrl, $download));
         }
         return $output;
     }
@@ -60,9 +68,9 @@ class EstoreScraper
         return $this->getOutput($rawHtmlProducts);
     }
 
-    private function getPages(string $url): array
+    private function getPagesUrls(): array
     {
-        $html = Htmlproducer::getHtml($url);
+        $html = Htmlproducer::getHtml($this->url);
 
         $dom = new DOMDocument();
         $dom->loadHTML($html);
@@ -70,8 +78,7 @@ class EstoreScraper
         $nodes = $this->getNodesByClassName('page-link next', $dom);
         $pages = [];
         foreach ($nodes as $node) {
-            // to do zmienić to 
-            $pages[] = $url . 'index.php?page=' . $node->getAttribute('data-page');
+            $pages[] = $this->url . 'index.php?page=' . $node->getAttribute('data-page');
         }
         return $pages;
     }
@@ -92,7 +99,7 @@ class EstoreScraper
         ['rating' => $rating, 'number' => $number] = $this->parseRatingString($ratingWithNumber);
         return [
             'name' => $dom->getElementsByTagName('a')[1]->getAttribute('data-name'),
-            'url' => $dom->getElementsByTagName('a')[1]->getAttribute('href'),
+            'url' => $this->url . $dom->getElementsByTagName('a')[1]->getAttribute('href'),
             'img' => $dom->getElementsByTagName('img')[0]->getAttribute('src'),
             'price' => $dom->getElementsByTagName('h5')[0]->nodeValue,
             'rating' => $rating,

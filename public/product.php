@@ -6,7 +6,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\EstoreScraper;
 
-$estoreScraper = new EstoreScraper();
+$estoreScraper = new EstoreScraper(url: 'http://estoremedia.space/DataIT/');
 
 echo "<pre>";
 echo "id: ";

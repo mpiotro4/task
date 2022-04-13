@@ -11,8 +11,8 @@ use App\CsvReader;
 $root = dirname(__DIR__) . DIRECTORY_SEPARATOR;
 define('VIEWS_PATH', $root . 'views' . DIRECTORY_SEPARATOR);
 
-$scraper = new EstoreScraper();
-$srapedData = $scraper->getProductsWithPagination(url: 'http://estoremedia.space/DataIT/', download: true);
+$estoreScraper = new EstoreScraper(url: 'http://estoremedia.space/DataIT/');
+$srapedData = $estoreScraper->getProductsWithPagination(download: true);
 CsvProducer::produceCSV("products.csv", $srapedData);
 
 echo '<br>';
