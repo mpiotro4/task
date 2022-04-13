@@ -6,19 +6,19 @@ namespace App;
 
 class EstoreScraper
 {
-    public function getProductsWithPagination($url)
+    public function getProductsWithPagination($url, $download = false)
     {
         $pages = $this->getPages($url);
         $output = [];
         foreach ($pages as $page) {
-            $output = array_merge($output, $this->getProducts($page));
+            $output = array_merge($output, $this->getProducts($page, $download));
         }
         return $output;
     }
 
-    public function getProducts($url)
+    public function getProducts($url, $download = false)
     {
-        $html = $this->getHtml($url);
+        $html = $this->getHtml($url, $download);
 
         $dom = new \DOMDocument();
         $dom->loadHTML($html);
@@ -49,8 +49,22 @@ class EstoreScraper
         return $pages;
     }
 
-    private function getHtml($url)
+    private function downloadHtml($url)
     {
+        $fileName = str_replace(['/', ':', '?'], '', $url);
+        if (!file_exists($fileName)) {
+            $out = $this->getHtml($url);
+            $fp = fopen($fileName, 'w+');
+            fwrite($fp, $out);
+            fclose($fp);
+        };
+        return file_get_contents($fileName);
+    }
+
+    private function getHtml($url, $download = false)
+    {
+        if ($download) return $this->downloadHtml($url);
+
         libxml_use_internal_errors(true);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);

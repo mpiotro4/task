@@ -1,0 +1,325 @@
+<html>
+<head>
+    <title>Category - TVs - Example store</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://estoremedia.space/DataIT/assets/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="http://estoremedia.space/DataIT/assets/css/A.font-awesome.min.css.pagespeed.cf.OnafgtmHdn.css" type="text/css"/>
+    <link rel="stylesheet" href="http://estoremedia.space/DataIT/assets/css/template.css" type="text/css"/>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="http://estoremedia.space/DataIT/">Recruitment Data IT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://estoremedia.space/DataIT/">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://estoremedia.space/DataIT/description.pdf">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container" style="margin-top:80px;">
+
+    <div class="row">
+
+        <div class="col-lg-3">
+
+            <h1 class="my-4">BestStore</h1>
+            <div class="list-group">
+                <a href="#" class="list-group-item">Accessories</a>
+                <a href="http://estoremedia.space/DataIT/" class="list-group-item active">TVs</a>
+                <a href="#" class="list-group-item">Home Cinema</a>
+                <a href="#" class="list-group-item">Soundbars</a>
+            </div>
+
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+
+            <div class="row mb-0 pl-3">
+                <h3>TVs - product category</h3>
+            </div>
+            <div class="row mb-2 pl-3" ">
+                <p>Scrape all products from this page. Do not forget about pagination.</p>
+            </div>
+
+            <div class="row">
+
+                                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006624479"><img class="card-img-top" src="https://m.media-amazon.com/images/I/A1GrEnE5qiL._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006624479" class="title" data-name="Samsung UE49MU8009 TV">Samsung UE49MU8009 TV</a>
+                                </h4>
+                                <h5>$1239,49</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">- (0)</small>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006624480"><img class="card-img-top" src="https://m.media-amazon.com/images/I/71yVbKuJnxL._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006624480" class="title" data-name="UE49RU8000">UE49RU8000</a>
+                                </h4>
+                                <h5>$954,66</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">- (0)</small>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006624481"><img class="card-img-top" src="https://m.media-amazon.com/images/I/61143x-x4+L._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006624481" class="title" data-name="Samsung 65NU8000 65-Inch Dynamic Crystal Colour Ultra HD Smart 4K TV - Slate Black/Eclipse Silver (2018 Model) + FREE Amazon High-Speed 0.9M HDMI 2.0 cable + Amazon High-Speed HDMI 2.0 cable">Samsung 65NU8000 65-Inch Dynam...</a>
+                                </h4>
+                                <h5>$1317,15</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">- (0)</small>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006624482"><img class="card-img-top" src="https://m.media-amazon.com/images/I/71IOs8BgQRL._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006624482" class="title" data-name="Samsung 55-Inch M6320 Smart Full HD Curved TV - Dark Titan">Samsung 55-Inch M6320 Smart Fu...</a>
+                                </h4>
+                                <h5>$688,82</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">&#9733;&#9733;&#9733;&#9733;&#9734; (61)</small>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006624483"><img class="card-img-top" src="https://m.media-amazon.com/images/I/816uwf6oXmL._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006624483" class="title" data-name="Samsung Series 5 F5500 32-inch Widescreen Full HD Smart LED TV (discontinued by manufacturer)                                           [Energy Class A]">Samsung Series 5 F5500 32-inch...</a>
+                                </h4>
+                                <h5>$357,62</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">&#9733;&#9733;&#9733;&#9734;&#9734; (183)</small>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006624484"><img class="card-img-top" src="https://m.media-amazon.com/images/I/41mogxy+J+L._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006624484" class="title" data-name="Samsung LE-19D450G1WXZT- TV">Samsung LE-19D450G1WXZT- TV</a>
+                                </h4>
+                                <h5>$215,49</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">- (0)</small>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006624485"><img class="card-img-top" src="https://m.media-amazon.com/images/I/51QSo5bzYYL._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006624485" class="title" data-name="Samsung 55&quot; Ultra HD 4K Smart Curved Screen LED TV                                           [Energy Class A+]">Samsung 55&quot; Ultra HD 4K S...</a>
+                                </h4>
+                                <h5>$942,34</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">&#9733;&#9733;&#9733;&#9733;&#9733; (3)</small>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006624486"><img class="card-img-top" src="https://m.media-amazon.com/images/I/81Wab-kErDL._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006624486" class="title" data-name="Samsung HG55ED890UBXXU 55-Inch Smart Ultra Slim Commercial TV - Black">Samsung HG55ED890UBXXU 55-Inch...</a>
+                                </h4>
+                                <h5>$821,22</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">- (0)</small>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006624487"><img class="card-img-top" src="https://m.media-amazon.com/images/I/41gtYsPiIFL._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006624487" class="title" data-name="Samsung HG55EC890XBXXU 55-Inch LED Smart Hotel TV - Black">Samsung HG55EC890XBXXU 55-Inch...</a>
+                                </h4>
+                                <h5>$1095,57</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">- (0)</small>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006624488"><img class="card-img-top" src="https://m.media-amazon.com/images/I/312Z-pc0yjL._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006624488" class="title" data-name="Samsung LE32A568 TV">Samsung LE32A568 TV</a>
+                                </h4>
+                                <h5>$630,01</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">- (0)</small>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006628062"><img class="card-img-top" src="https://m.media-amazon.com/images/I/81iHjvXW4wL._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006628062" class="title" data-name="LG 55SM8500PLA 55 Inch UHD 4K HDR Smart NanoCell LED TV with Freeview Play - Black (2019 Model)#:55 Inch 2019 Model">LG 55SM8500PLA 55 Inch UHD 4K ...</a>
+                                </h4>
+                                <h5>$679,00</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">&#9733;&#9733;&#9733;&#9733;&#9734; (181)</small>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006628063"><img class="card-img-top" src="https://m.media-amazon.com/images/I/81iHjvXW4wL._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006628063" class="title" data-name="LG 49SM8500PLA 49 Inch UHD 4K HDR Smart NanoCell LED TV with Freeview Play - Black (2019 Model)#:49 Inch 2019 Model">LG 49SM8500PLA 49 Inch UHD 4K ...</a>
+                                </h4>
+                                <h5>$523,91</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">&#9733;&#9733;&#9733;&#9733;&#9734; (181)</small>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006628064"><img class="card-img-top" src="https://m.media-amazon.com/images/I/81gfzdh5sUL._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006628064" class="title" data-name="LG Electronics 50UM7500PLA 50-Inch UHD 4K HDR Smart LED TV with Freeview Play - Dark Meteor Titan colour (2019 Model)#:50 Inch 2019 Model">LG Electronics 50UM7500PLA 50-...</a>
+                                </h4>
+                                <h5>$379,00</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">&#9733;&#9733;&#9733;&#9733;&#9734; (250)</small>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006628065"><img class="card-img-top" src="https://m.media-amazon.com/images/I/81iHjvXW4wL._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006628065" class="title" data-name="LG 65SM8500PLA 65 Inch UHD 4K HDR Smart NanoCell LED TV with Freeview Play - Black (2019 Model)#:65 Inch 2019 Model">LG 65SM8500PLA 65 Inch UHD 4K ...</a>
+                                </h4>
+                                <h5>$929,00</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">&#9733;&#9733;&#9733;&#9733;&#9734; (180)</small>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="product.php?id=2006628066"><img class="card-img-top" src="https://m.media-amazon.com/images/I/718+ebz7rRL._AC_UY218_ML3_.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="product.php?id=2006628066" class="title" data-name="LG 49SM8600PLA TV                                           [Energy Class A++]">LG 49SM8600PLA TV             ...</a>
+                                </h4>
+                                <h5>$579,00</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">&#9733;&#9733;&#9733;&#9733;&#9734; (3)</small>
+                            </div>
+                        </div>
+                    </div>
+                                </div>
+            <!-- /.row -->
+
+            <div class="row pl-3">
+                <ul class="pagination">
+                                            <li class="page-item "><a href="#" class="page-link next" data-page="1">1</a></li>
+                                            <li class="page-item "><a href="#" class="page-link next" data-page="2">2</a></li>
+                                            <li class="page-item  active"><a href="#" class="page-link next" data-page="3">3</a></li>
+                                            <li class="page-item "><a href="#" class="page-link next" data-page="4">4</a></li>
+                                                                <li class="page-item"><a href="#" class="page-link next" data-page="4">next &raquo;</a></li>
+                                    </ul>
+            </div>
+
+        </div>
+
+        <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<script>
+    $(".pagination a").click(function() {
+        window.location.href = "index.php?page=" + $(this).attr('data-page');
+    });
+</script>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Example store - recruitment task 2020</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+</body>
+</html>
