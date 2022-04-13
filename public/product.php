@@ -8,7 +8,10 @@ use App\EstoreScraper;
 
 $estoreScraper = new EstoreScraper();
 
-echo "to jest produkt id=";
+echo "<pre>";
+echo "id: ";
 if (isset($_GET['id'])) echo $_GET['id'];
-$estoreScraper->getProduct($_GET['id']);
+echo "<br>";
+print_r($estoreScraper->getProduct($_GET['id']));
+echo "</pre>";
 echo '<br>';

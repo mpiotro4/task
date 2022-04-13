@@ -6,39 +6,29 @@ namespace App;
 
 class EstoreScraper
 {
-    public function getProduct($id)
+    public function getProduct($id): array
     {
         $html = HtmlProducer::getHtml('http://estoremedia.space/DataIT/product.php?id=' . $id);
-
         $dom = new \DOMDocument();
         $dom->loadHTML($html);
+        $finder = new \DomXPath($dom);
 
-        $wholeColumn = $this->getNodesByClassName('col-lg-9', $dom);
-        $price = $this->getNodesByClassName('price', $dom);
-        $pricePromo = $this->getNodesByClassName('price-promo', $dom);
-        $priceOld = $this->getNodesByClassName('price-old', $dom);
-        $img = $dom->getElementsByTagName('img')[0]->getAttribute('src');
-        $json = $dom->getElementsByTagName('script')[1]->nodeValue;
-        $ratingWithNumber = trim($dom->getElementsByTagName('small')[0]->nodeValue);
+        $price = $finder->query('/html/body/div/div/div[2]/div[3]/div/div/div[1]/h5/span')[0]->nodeValue;
+        $name = $finder->query('/html/body/div/div/div[2]/div[1]/h3')[0]->nodeValue;
+        $priceOld = $finder->query('/html/body/div/div/div[2]/div[3]/div/div/div[1]/h5/del')[0]->nodeValue ?? null;
+        $img = $finder->query('/html/body/div/div/div[2]/div[3]/div/div/img')[0]->getAttribute('src');
+        $json = $finder->query('/html/body/div/div/div[2]/div[3]/div/div/div[1]/script')[0]->nodeValue;
+        $ratingWithNumber = $finder->query('/html/body/div/div/div[2]/div[3]/div/div/div[2]/small')[0]->nodeValue;
+        ['stars' => $stars, 'number' => $number] = $this->parseRatingString($ratingWithNumber);
 
-
-        echo '<br>';
-        echo 'price: ' . $price[0]->nodeValue ?? '' . '<br>';
-        echo '<br>';
-        echo 'promo price: ';
-        echo $pricePromo[0]->nodeValue ?? '' . '<br>';
-        echo 'old price: ';
-        echo $priceOld[0]->nodeValue ?? '' . '<br>';
-        echo 'img url: ' . $img;
-        echo '<br>';
-        echo 'json: ' . $json;
-        echo '<br>';
-        echo 'rating: ' . $ratingWithNumber;
-        // foreach ($nodes as $node) {
-        //     echo "<br>";
-        //     echo $node->nodeValue;
-        //     echo "<br>";
-        // }
+        return [
+            'price' => $price,
+            'old price' => $priceOld,
+            'img url' => $img,
+            'stars' => $stars,
+            'number' => $number,
+            'hidden data' =>  $this->parseJson($json, $name)
+        ];
     }
 
     public function getProductsWithPagination($url, $download = false)
@@ -96,23 +86,52 @@ class EstoreScraper
 
     private function getProductParams($dom)
     {
-        $ratingWithNumber = trim($dom->getElementsByTagName('small')[0]->nodeValue);
-        [$rating, $number] = explode(' ', $ratingWithNumber, 2);
-        $number = str_replace(array('(', ')'), '', $number);
+        $ratingWithNumber = $dom->getElementsByTagName('small')[0]->nodeValue;
+        ['stars' => $stars, 'number' => $number] = $this->parseRatingString($ratingWithNumber);
         return [
             'name' => $dom->getElementsByTagName('a')[1]->getAttribute('data-name'),
             'url' => $dom->getElementsByTagName('a')[1]->getAttribute('href'),
             'img' => $dom->getElementsByTagName('img')[0]->getAttribute('src'),
             'price' => $dom->getElementsByTagName('h5')[0]->nodeValue,
-            'rating' => $rating,
+            'rating' => $stars,
             'number of ratings' => $number
         ];
     }
 
-    private function getNodesByClassName($className, $dom)
+    private function getNodesByClassName($className, $dom): \DOMNodeList
     {
         $finder = new \DomXPath($dom);
         $nodes = $finder->query("//*[contains(concat(' ', normalize-space(@class), ' '), '$className')]");
         return $nodes;
+    }
+
+    private function parseRatingString(String $rating): array
+    {
+        $rating = trim($rating);
+        [$stars, $number] = explode(' ', $rating, 2);
+
+        $number = str_replace(array('(', ')'), '', $number);
+        $stars = count(array_keys(unpack("C*", $stars), '133'));
+        return [
+            'stars' => $stars,
+            'number' => $number
+        ];
+    }
+
+    private function parseJson($json, $name)
+    {
+        $decoded = json_decode($json);
+        $parsedVariants = [];
+        foreach ($decoded->products->variants as $number => $variant) {
+            $parsedVariants[] =  [
+                'name' => $name . "#" . $number,
+                'price' => $variant->price,
+                'price old' => $variant->price_old
+            ];
+        }
+        return [
+            'product code' => $decoded->products->code,
+            'variants' => $parsedVariants
+        ];
     }
 }
