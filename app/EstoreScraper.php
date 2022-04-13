@@ -21,13 +21,13 @@ class EstoreScraper
         $img = $finder->query('/html/body/div/div/div[2]/div[3]/div/div/img')[0]->getAttribute('src');
         $json = $finder->query('/html/body/div/div/div[2]/div[3]/div/div/div[1]/script')[0]->nodeValue;
         $ratingWithNumber = $finder->query('/html/body/div/div/div[2]/div[3]/div/div/div[2]/small')[0]->nodeValue;
-        ['stars' => $stars, 'number' => $number] = $this->parseRatingString($ratingWithNumber);
+        ['rating' => $rating, 'number' => $number] = $this->parseRatingString($ratingWithNumber);
 
         return [
             'price' => $price,
             'old price' => $priceOld,
             'img url' => $img,
-            'stars' => $stars,
+            'rating' => $rating,
             'number' => $number,
             'hidden data' =>  $this->parseJson($json, $name)
         ];
@@ -89,13 +89,13 @@ class EstoreScraper
     private function getProductParams(DOMDocument $dom): array
     {
         $ratingWithNumber = $dom->getElementsByTagName('small')[0]->nodeValue;
-        ['stars' => $stars, 'number' => $number] = $this->parseRatingString($ratingWithNumber);
+        ['rating' => $rating, 'number' => $number] = $this->parseRatingString($ratingWithNumber);
         return [
             'name' => $dom->getElementsByTagName('a')[1]->getAttribute('data-name'),
             'url' => $dom->getElementsByTagName('a')[1]->getAttribute('href'),
             'img' => $dom->getElementsByTagName('img')[0]->getAttribute('src'),
             'price' => $dom->getElementsByTagName('h5')[0]->nodeValue,
-            'rating' => $stars,
+            'rating' => $rating,
             'number of ratings' => $number
         ];
     }
@@ -107,15 +107,15 @@ class EstoreScraper
         return $nodes;
     }
 
-    private function parseRatingString(String $rating): array
+    private function parseRatingString(String $ratingString): array
     {
-        $rating = trim($rating);
-        [$stars, $number] = explode(' ', $rating, 2);
+        $ratingString = trim($ratingString);
+        [$rating, $number] = explode(' ', $ratingString, 2);
 
         $number = str_replace(array('(', ')'), '', $number);
-        $stars = count(array_keys(unpack("C*", $stars), '133'));
+        $rating = count(array_keys(unpack("C*", $rating), '133'));
         return [
-            'stars' => $stars,
+            'rating' => $rating,
             'number' => $number
         ];
     }
