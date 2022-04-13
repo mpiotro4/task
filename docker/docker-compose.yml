@@ -9,7 +9,7 @@ services:
     restart: always
     working_dir: /var/www/
     volumes:
-      - ../src:/var/www
+      - ../:/var/www
   nginx:
     image: nginx:1.19-alpine
     container_name: eStoreMedia-nginx
@@ -17,5 +17,5 @@ services:
     ports:
       - 8000:80
     volumes:
-      - ../src:/var/www
+      - ../:/var/www
       - ./nginx:/etc/nginx/conf.d
