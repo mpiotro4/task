@@ -6,7 +6,7 @@ namespace App;
 
 class CsvProducer
 {
-    static public function produceCSV($file_name, $arr)
+    static public function produceCSV(string $file_name, array $input): void
     {
 
         $has_header = false;
@@ -17,7 +17,7 @@ class CsvProducer
             fclose($f);
         }
 
-        foreach ($arr as $c) {
+        foreach ($input as $c) {
             $fp = fopen($file_name, "a");
 
             if (!$has_header) {

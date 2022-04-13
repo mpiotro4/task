@@ -6,13 +6,13 @@ namespace App;
 
 class CsvReader
 {
-    public static function readCSV($fileName): array
+    public static function readCSV(string $fileName): array
     {
         $output = CsvReader::readFiles($fileName);
         return $output;
     }
 
-    private static function readFiles($fileName): array
+    private static function readFiles(string $fileName): array
     {
         $output = [];
         $file = fopen($fileName, 'r');

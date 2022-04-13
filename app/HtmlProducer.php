@@ -6,7 +6,7 @@ namespace App;
 
 class HtmlProducer
 {
-    public static function downloadHtml($url)
+    public static function downloadHtml(string $url): string
     {
         $fileName = str_replace(['/', ':', '?'], '', $url);
         if (!file_exists($fileName)) {
@@ -18,7 +18,7 @@ class HtmlProducer
         return file_get_contents($fileName);
     }
 
-    public static function getHtml($url, $download = false)
+    public static function getHtml(string $url, bool $download = false): string
     {
         if ($download) return HtmlProducer::downloadHtml($url);
 

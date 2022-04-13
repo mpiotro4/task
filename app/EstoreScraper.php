@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App;
 
+use DOMDocument;
+
 class EstoreScraper
 {
-    public function getProduct($id): array
+    public function getProduct(string $id): array
     {
         $html = HtmlProducer::getHtml('http://estoremedia.space/DataIT/product.php?id=' . $id);
         $dom = new \DOMDocument();
@@ -14,7 +16,7 @@ class EstoreScraper
         $finder = new \DomXPath($dom);
 
         $price = $finder->query('/html/body/div/div/div[2]/div[3]/div/div/div[1]/h5/span')[0]->nodeValue;
-        $name = $finder->query('/html/body/div/div/div[2]/div[1]/h3')[0]->nodeValue;
+        $name = $finder->query('/html/body/div/div/div[2]/div[3]/div/div/div[1]/p/text()')[0]->nodeValue;
         $priceOld = $finder->query('/html/body/div/div/div[2]/div[3]/div/div/div[1]/h5/del')[0]->nodeValue ?? null;
         $img = $finder->query('/html/body/div/div/div[2]/div[3]/div/div/img')[0]->getAttribute('src');
         $json = $finder->query('/html/body/div/div/div[2]/div[3]/div/div/div[1]/script')[0]->nodeValue;
@@ -31,7 +33,7 @@ class EstoreScraper
         ];
     }
 
-    public function getProductsWithPagination($url, $download = false)
+    public function getProductsWithPagination(string $url, bool $download = false): array
     {
         $pages = $this->getPages($url);
         $output = [];
@@ -41,11 +43,11 @@ class EstoreScraper
         return $output;
     }
 
-    public function getProducts($url, $download = false)
+    public function getProducts(string $url, bool $download = false): array
     {
         $html = HtmlProducer::getHtml($url, $download);
 
-        $dom = new \DOMDocument();
+        $dom = new DOMDocument();
         $dom->loadHTML($html);
 
         $nodes = $this->getNodesByClassName('card h-100', $dom);
@@ -58,11 +60,11 @@ class EstoreScraper
         return $this->getOutput($rawHtmlProducts);
     }
 
-    private function getPages($url)
+    private function getPages(string $url): array
     {
         $html = Htmlproducer::getHtml($url);
 
-        $dom = new \DOMDocument();
+        $dom = new DOMDocument();
         $dom->loadHTML($html);
 
         $nodes = $this->getNodesByClassName('page-link next', $dom);
@@ -74,17 +76,17 @@ class EstoreScraper
         return $pages;
     }
 
-    private function getOutput($rawHtmlProducts)
+    private function getOutput(array $rawHtmlProducts): array
     {
         foreach ($rawHtmlProducts as $product) {
-            $dom = new \DOMDocument();
+            $dom = new DOMDocument();
             $dom->loadHTML(mb_convert_encoding($product, 'HTML-ENTITIES', 'UTF-8'));
             $output[] = $this->getProductParams($dom);
         }
         return $output;
     }
 
-    private function getProductParams($dom)
+    private function getProductParams(DOMDocument $dom): array
     {
         $ratingWithNumber = $dom->getElementsByTagName('small')[0]->nodeValue;
         ['stars' => $stars, 'number' => $number] = $this->parseRatingString($ratingWithNumber);
@@ -98,7 +100,7 @@ class EstoreScraper
         ];
     }
 
-    private function getNodesByClassName($className, $dom): \DOMNodeList
+    private function getNodesByClassName(string $className, DOMDocument $dom): \DOMNodeList
     {
         $finder = new \DomXPath($dom);
         $nodes = $finder->query("//*[contains(concat(' ', normalize-space(@class), ' '), '$className')]");
@@ -118,7 +120,7 @@ class EstoreScraper
         ];
     }
 
-    private function parseJson($json, $name)
+    private function parseJson(string $json, string $name): array
     {
         $decoded = json_decode($json);
         $parsedVariants = [];

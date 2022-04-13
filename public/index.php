@@ -12,18 +12,13 @@ $root = dirname(__DIR__) . DIRECTORY_SEPARATOR;
 define('VIEWS_PATH', $root . 'views' . DIRECTORY_SEPARATOR);
 
 $scraper = new EstoreScraper();
-$arr = $scraper->getProductsWithPagination(url: 'http://estoremedia.space/DataIT/', download: true);
-CsvProducer::produceCSV("products.csv", $arr);
+$srapedData = $scraper->getProductsWithPagination(url: 'http://estoremedia.space/DataIT/', download: true);
+CsvProducer::produceCSV("products.csv", $srapedData);
 
 echo '<br>';
 echo "Prasowanie produktów zakończone, wynik zapisany do pliku 'products.csv' w katalogu public";
 echo '<br>';
 
 $products = CsvReader::readCSV('products.csv');
-
-function myFunction()
-{
-    return "DUPSKO";
-}
 
 require VIEWS_PATH . 'table.php';

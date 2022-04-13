@@ -14,4 +14,3 @@ if (isset($_GET['id'])) echo $_GET['id'];
 echo "<br>";
 print_r($estoreScraper->getProduct($_GET['id']));
 echo "</pre>";
-echo '<br>';
